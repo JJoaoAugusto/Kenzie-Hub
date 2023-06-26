@@ -28,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     body{
         background-color: var(--grey-4);
         font-family: 'Inter', sans-serif;
+        color: var(--grey-0);
     }
 
     ul, ol{
@@ -43,6 +44,14 @@ export const GlobalStyles = createGlobalStyle`
         color: var(--color-grey-0);
     }
 
+    .bkColor__grey-1{
+        background-color: var(--grey-1);
+    }
+
+    .bkColor__grey-2{
+        background-color: var(--grey-2);
+    }   
+
     .bkColor__grey-3{
         background-color: var(--grey-3);
     }
@@ -50,9 +59,15 @@ export const GlobalStyles = createGlobalStyle`
     .bkColor__primary{
         background-color: var(--color-primary);
     }
+    .bkColor__primary:hover{
+        background-color: var(--color-primary-focus);
+    }
 
     .bkColor__primary-negative{
         background-color: var(--color-primary-negative);
+    }
+    .bkColor__primary-negative:hover{
+        background-color: var(--grey-1);
     }
 
     .kenzieHub__logo{

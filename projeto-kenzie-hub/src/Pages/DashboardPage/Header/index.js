@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
     .header__nav{
         position: fixed;
         width: 100%;
-        padding: 25px 0;
+        padding: 0 10px;
 
         display: flex;
         justify-content: center;
@@ -23,22 +23,16 @@ export const StyledHeader = styled.header`
     .nav__container{
         width: 100%;
         max-width: 800px;
+        padding: 25px 0px;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .nav__container button{
-        width: 90px;
-    }
-
-    .nav__container button:hover{
-        background-color: var(--grey-2);
-    }
-
     .header__content{
         width: 100%;
-        padding: 150px 0 50px 0;
+        padding: 150px 10px 50px 10px;
 
         display: flex;
         justify-content: center;
@@ -49,8 +43,10 @@ export const StyledHeader = styled.header`
     .content__container{
         width: 100%;
         max-width: 800px;
+        gap: 15px;
 
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 `

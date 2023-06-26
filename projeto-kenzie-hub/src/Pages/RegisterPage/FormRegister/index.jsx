@@ -2,18 +2,17 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "../../../components/Input/index.jsx"
 import { FormRegisterSchema } from "../FormRegisterSchema"
-import { api } from "../../../services/api"
 import { Select } from "../../../components/Select/index.jsx"
-import { toast } from "react-toastify"
-import { useNavigate } from "react-router-dom"
 import { StyledForm } from "../../../styles/StyledForm.js"
-import { StyledButton } from "../../../styles/StyledButton.js"
+import { StyledButton } from "../../../styles/ButtonsStyles/StyledButton.js"
 import { StyledH1 } from "../../../styles/TipographyStyles/StyledH1.js"
 import { StyledSpan } from "../../../styles/TipographyStyles/StyledSpan.js"
+import { UserContext } from "../../../providers/UserContext.jsx"
+import { useContext } from "react"
 
 export const FormRegister = () => {
 
-    const navigate = useNavigate()
+    const { registerSubmit } = useContext(UserContext)
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: "onSubmit",
@@ -21,20 +20,8 @@ export const FormRegister = () => {
         resolver: zodResolver(FormRegisterSchema)
     })
 
-    const userRegister = async (formData) => {
-        try {
-            await api.post("/users", formData)
-            toast.success("Usuário registrado com sucesso!")
-            navigate("/")
-        } catch (error) {
-            toast.error("Ops! Algo aconteceu")
-        }
-    }
-
-    const submit = (formData) => userRegister(formData)
-
     return (
-        <StyledForm onSubmit={handleSubmit(submit)} className="form__container">
+        <StyledForm onSubmit={handleSubmit(registerSubmit)} className="form__container">
             <div className="form__header">
                 <StyledH1>Crie sua conta</StyledH1>
                 <StyledSpan>Rápido e grátis, vamos nessa</StyledSpan>

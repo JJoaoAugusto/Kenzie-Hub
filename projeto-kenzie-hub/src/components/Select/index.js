@@ -11,5 +11,6 @@ export const StyledSelect = styled.fieldset`
         background-color: var(--grey-2);
         color: var(--grey-0);
         border: none;
+        border-radius: 4px;
     }   
 `

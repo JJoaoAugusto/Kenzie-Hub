@@ -17,10 +17,6 @@ export const StyledMain = styled.main`
         padding-bottom: 30px;
     }
 
-    .header__register button{
-        width: 90px;
-    }
-
     .header__register button:hover{
         background-color: var(--grey-2);
     }
@@ -31,9 +27,5 @@ export const StyledMain = styled.main`
         align-items: center;
         gap: 20px;
         padding: 10px 0;
-    }
-
-    .form__container button:hover{
-        background-color: var(--color-primary-focus);
     }
 `

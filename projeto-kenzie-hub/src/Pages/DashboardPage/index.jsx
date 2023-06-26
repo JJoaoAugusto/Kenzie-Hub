@@ -1,21 +1,13 @@
-import { useNavigate } from "react-router-dom"
 import { Header } from "./Header/index.jsx"
-import { Main } from "./Main/index.jsx"
+import { TechProvider } from "../../providers/TechContext.jsx"
+import { TechSection } from "./TechSection/index.jsx"
 
-export const DashboardPage = ({ user }) => {
-
-    const navigate = useNavigate()
-
-    const logout = () => {
-        confirm("Tem certeza que deseja sair?")
-        localStorage.clear()
-        navigate("/")
-    }
+export const DashboardPage = () => {
 
     return (
-        <>
-            <Header logout={logout} user={user} />
-            <Main />
-        </>
+        <TechProvider>
+            <Header />
+            <TechSection />
+        </TechProvider>
     )
 }

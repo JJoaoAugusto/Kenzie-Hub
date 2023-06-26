@@ -2,15 +2,15 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "../../../components/Input/index.jsx"
 import { FormLoginSchema } from "../FormLoginSchema"
-import { api } from "../../../services/api"
-import { Link, useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
+import { Link } from "react-router-dom"
 import { StyledForm } from "../../../styles/StyledForm.js"
-import { StyledButton } from "../../../styles/StyledButton.js"
+import { StyledButton } from "../../../styles/ButtonsStyles/StyledButton.js"
 import { StyledH1 } from "../../../styles/TipographyStyles/StyledH1.js"
 import { StyledSpan } from "../../../styles/TipographyStyles/StyledSpan.js"
+import { useContext } from "react"
+import { UserContext } from "../../../providers/UserContext.jsx"
 
-export const FormLogin = ({ setUser }) => {
+export const FormLogin = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: "onSubmit",
@@ -18,28 +18,10 @@ export const FormLogin = ({ setUser }) => {
         resolver: zodResolver(FormLoginSchema)
     })
 
-    const navigate = useNavigate()
-
-    const userLogin = async (formData) => {
-        try {
-            const { data } = await api.post("/sessions", formData)
-
-            localStorage.setItem("@TOKEN", data.token)
-            localStorage.setItem("@USERID", data.user.id)
-
-            setUser(data.user)
-            toast.success("Usuário logado com sucesso!")
-            navigate("/dashboard")
-
-        } catch (error) {
-            toast.error("Ops! Algo deu errado")
-        }
-    }
-
-    const submit = (formData) => userLogin(formData)
+    const { loginSubmit } = useContext(UserContext)
 
     return (
-        <StyledForm onSubmit={handleSubmit(submit)} className="form__container">
+        <StyledForm onSubmit={handleSubmit(loginSubmit)} className="form__container">
             <div className="form__header">
                 <StyledH1>Login</StyledH1>
             </div>
@@ -48,7 +30,7 @@ export const FormLogin = ({ setUser }) => {
             <StyledButton className="bkColor__primary" type="submit">Entrar</StyledButton>
             <div className="div__register">
                 <StyledSpan>Ainda não possui uma conta?</StyledSpan>
-                <Link to="/register"><StyledButton className="bkColor__primary-negative">Cadastre-se</StyledButton></Link>
+                <Link to="/register"><StyledButton>Cadastre-se</StyledButton></Link>
             </div>
         </StyledForm >
     )

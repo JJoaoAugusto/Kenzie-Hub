@@ -12,4 +12,7 @@ export const StyledButton = styled.button`
     font-size: 14px;
     font-weight: 500;
     
+    &:hover{
+        background-color: var(--grey-2);
+    }
 `

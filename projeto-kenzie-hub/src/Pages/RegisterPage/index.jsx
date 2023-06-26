@@ -2,14 +2,14 @@ import { Link } from "react-router-dom"
 import { FormRegister } from "./FormRegister"
 import { StyledMain } from "./index.js"
 import Logo from "../../assets/Logo.svg"
-import { StyledButton } from "../../styles/StyledButton"
+import { StyledButtonSmall } from "../../styles/ButtonsStyles/StyledButtonSmall.js"
 
 export const RegisterPage = () => {
     return (
         <StyledMain>
             <div className="header__register">
                 <img className="kenzieHub__logo" src={Logo} alt="Logo Kenzie Hub" />
-                <Link to="/"><StyledButton className="bkColor__grey-3">Voltar</StyledButton></Link>
+                <Link to="/"><StyledButtonSmall className="bkColor__grey-3">Voltar</StyledButtonSmall></Link>
             </div>
             <FormRegister />
         </StyledMain>

@@ -26,8 +26,4 @@ export const StyledMain = styled.main`
         padding: 15px;
     }
 
-    .form__container button:hover{
-        background-color: var(--color-primary-focus);
-    }
-
 `
