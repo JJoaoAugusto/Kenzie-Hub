@@ -1,6 +1,6 @@
 import { StyledH1 } from "../../../styles/TipographyStyles/StyledH1.js"
 import Logo from "../../../assets/Logo.svg"
-import { StyledHeader } from "."
+import { StyledHeader } from "./index.js"
 import { StyledSpan } from "../../../styles/TipographyStyles/StyledSpan"
 import { StyledButtonSmall } from "../../../styles/ButtonsStyles/StyledButtonSmall.js"
 import { useContext } from "react"

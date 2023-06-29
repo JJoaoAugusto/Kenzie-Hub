@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { api } from "../services/api";
-import { UserContext } from "./UserContext";
-import { toast } from "react-toastify";
+import { createContext, useContext, useEffect, useState } from "react"
+import { api } from "../services/api"
+import { UserContext } from "./UserContext"
+import { toast } from "react-toastify"
 
 export const TechContext = createContext({})
 
@@ -45,7 +45,6 @@ export const TechProvider = ({ children }) => {
     }
 
     const editTech = async (formData) => {
-        console.log(formData)
         try {
             const { data } = await api.put(`/users/techs/${tech.id}`, formData, {
                 headers: {

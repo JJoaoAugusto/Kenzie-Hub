@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 export const FormLoginSchema = z.object({
     email: z.string().nonempty("O e-mail é obrigatório").email("O email fornecido é inválido"),

@@ -7,15 +7,17 @@ import { Select } from "../../../../../components/Select/index.jsx"
 import { Input } from "../../../../../components/Input/index.jsx"
 import { StyledButton } from "../../../../../styles/ButtonsStyles/StyledButton"
 import { StyledButtonSmall } from "../../../../../styles/ButtonsStyles/StyledButtonSmall"
+import { EditTechSchema } from "./EditTechSchema/index.jsx"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 export const EditTechModal = () => {
 
     const { submit, tech, closeEditModal, remove } = useContext(TechContext)
 
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         mode: "onSubmit",
         reValidateMode: "onChange",
-        // resolver: zodResolver()
+        resolver: zodResolver(EditTechSchema)
     })
 
     return (
@@ -26,8 +28,8 @@ export const EditTechModal = () => {
                     <button onClick={closeEditModal}>X</button>
                 </div>
                 <div className="modal__content">
-                    <Input type="text" readOnly value={tech.title} label="Nome" />
-                    <Select {...register("status")}>
+                    <Input type="text" readOnly value={tech.title} errors={errors.title} label="Nome" />
+                    <Select {...register("status")} errors={errors.status}>
                         <option value="Iniciante" >Iniciante</option>
                         <option value="Intermediário">Intermediário</option>
                         <option value="Avançado">Avançado</option>
@@ -37,7 +39,6 @@ export const EditTechModal = () => {
                         <StyledButtonSmall className="bkColor__grey-1" type="button" onClick={(e) => remove(e)}>Excluir</StyledButtonSmall>
                     </div>
                 </div>
-
             </form>
         </StyledEditModal>
     )
